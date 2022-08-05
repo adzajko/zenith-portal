@@ -19,7 +19,7 @@ function DashboardContainer(): JSX.Element {
   return (
     <StyledDashboardContainer>
       <Title>Skip the boring setup steps.</Title>
-      <Title>Straight to work.</Title>
+      <Title>Straight to making your projects.</Title>
     </StyledDashboardContainer>
   );
 }
