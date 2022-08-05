@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, RouteProps, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, RouteProps, Routes } from "react-router-dom";
 import { selectLoggedIn } from "../features/authentication/authSlice";
 import { useAppSelector } from "../store/hooks";
 
@@ -14,13 +14,14 @@ function ApplicationRouter(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        {ROUTES.map((route) =>
-          route.isPrivate && isLoggedIn ? (
+        {ROUTES.map((route) => {
+          if (!route.isPrivate) return <Route {...route} key={route.path} />;
+          return isLoggedIn ? (
             <Route {...route} key={route.path} />
           ) : (
             <Navigate to="/login" replace />
-          )
-        )}
+          );
+        })}
       </Routes>
     </BrowserRouter>
   );
