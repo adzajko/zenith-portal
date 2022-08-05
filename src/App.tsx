@@ -4,6 +4,7 @@ import ApplicationRouter from "./router";
 import { Header } from "./ui/Header";
 import { Footer } from "./ui/Footer";
 import { MainContainer } from "./ui/MainContainer";
+import { ThemeProvider } from "./ui/theming";
 
 const AppContainer = styled(Box)({
   height: "100%",
@@ -13,13 +14,15 @@ const AppContainer = styled(Box)({
 
 function App(): JSX.Element {
   return (
-    <AppContainer>
-      <Header />
-      <MainContainer>
-        <ApplicationRouter />
-      </MainContainer>
-      <Footer />
-    </AppContainer>
+    <ThemeProvider>
+      <AppContainer>
+        <Header />
+        <MainContainer>
+          <ApplicationRouter />
+        </MainContainer>
+        <Footer />
+      </AppContainer>
+    </ThemeProvider>
   );
 }
 

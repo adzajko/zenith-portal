@@ -14,14 +14,14 @@ const Container = styled(Box)({
 });
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  background: theme.palette.warning.dark,
+  background: theme.themedPalette.primary,
   color: theme.palette.common.white,
   position: "absolute",
   width: "150px",
   bottom: "25%",
   left: "25%",
   "&:hover": {
-    background: theme.palette.warning.dark
+    background: theme.themedPalette.primary
   }
 }));
 

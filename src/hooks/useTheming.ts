@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-enum SupportedThemes {
+export enum SupportedThemes {
   LIGHT = "light",
   DARK = "dark"
   // Add additional themes here

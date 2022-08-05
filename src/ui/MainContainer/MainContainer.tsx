@@ -6,7 +6,7 @@ interface MainContainerProps {
 }
 
 const StyledMainContainer = styled(Box)(({ theme }) => ({
-  backgroundColor: theme.palette.grey["900"],
+  backgroundColor: theme.themedPalette.background,
   maxHeight: "100%",
   overflowY: "auto"
 }));

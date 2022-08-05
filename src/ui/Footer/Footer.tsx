@@ -4,14 +4,14 @@ import { Box, styled, Typography } from "@mui/material";
 const StyledFooter = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
   boxShadow: theme.shadows[11],
-  background: "#101010",
-  borderTop: `2px solid ${theme.palette.warning.dark}`
+  background: theme.themedPalette.backgroundAlt,
+  borderTop: `2px solid ${theme.themedPalette.primary}`
 }));
 
 const FooterText = styled(Typography)(({ theme }) => ({
   ...theme.typography.h6,
   textAlign: "center",
-  color: theme.palette.common.white,
+  color: theme.themedPalette.text,
   fontWeight: "bold"
 }));
 

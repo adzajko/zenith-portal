@@ -10,7 +10,7 @@ const StyledDashboardContainer = styled(Box)({
 
 const Title = styled(Typography)(({ theme }) => ({
   ...theme.typography.h1,
-  color: theme.palette.common.white,
+  color: theme.themedPalette.text,
   textAlign: "center",
   fontWeight: "bold"
 }));
