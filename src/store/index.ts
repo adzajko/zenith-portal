@@ -1,10 +1,14 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import authReducer from "../features/authentication/authSlice";
+import websocketReducer from "../features/websockets/wsocketSlice";
+import { socketMiddleware } from "../features/websockets/wsMiddleware";
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer
-  }
+    auth: authReducer,
+    websocket: websocketReducer
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([socketMiddleware])
 });
 
 export type AppDispatch = typeof store.dispatch;
