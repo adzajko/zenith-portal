@@ -4,17 +4,28 @@ import { selectLoggedIn } from "../features/authentication/authSlice";
 import { useAppSelector } from "../store/hooks";
 import DashboardContainer from "../features/Dashboard/DashboardContainer";
 import { NotFound } from "../ui/NotFound";
+import { SplashScreenContainer } from "../features/SplashScreen/SplashScreenContainer";
 
 interface ApplicationRoute extends RouteProps {
-  isPrivate: boolean;
+  isPrivate?: boolean;
 }
 
 const ROUTES: ApplicationRoute[] = [
   {
     path: "/",
     index: true,
-    element: <DashboardContainer />,
+    element: <Navigate to="/welcome" />
+  },
+  {
+    path: "/welcome",
+    index: true,
+    element: <SplashScreenContainer />,
     isPrivate: false
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardContainer />,
+    isPrivate: true
   }
 ];
 
@@ -28,7 +39,7 @@ function ApplicationRouter(): JSX.Element {
           return isLoggedIn ? (
             <Route {...route} key={route.path} />
           ) : (
-            <Navigate to="/login" replace />
+            <Route element={<Navigate to="/welcome" />} key={route.path} />
           );
         })}
         <Route path="*" element={<NotFound />} />

@@ -46,7 +46,6 @@
       }
     ],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "off",
     "import/prefer-default-export": "off",
     "react/destructuring-assignment": "off",
     "import/no-extraneous-dependencies": [

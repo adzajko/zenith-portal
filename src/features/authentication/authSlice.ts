@@ -27,6 +27,9 @@ const authSlice = createSlice({
   name: "Authentication",
   initialState,
   reducers: {
+    setLoggedIn: (state) => {
+      state.isLoggedIn = true;
+    },
     clearStatus: (state) => {
       state.status = ApiStatus.IDLE;
     }
@@ -47,7 +50,7 @@ const authSlice = createSlice({
   }
 });
 
-export const { clearStatus } = authSlice.actions;
+export const { clearStatus, setLoggedIn } = authSlice.actions;
 
 export const selectLoggedIn = ({ auth }: RootState) => auth.isLoggedIn;
 export const selectAuthStatus = ({ auth }: RootState) => auth.status;

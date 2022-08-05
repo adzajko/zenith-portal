@@ -3,6 +3,7 @@ import { Box, MenuItem, styled, TextField } from "@mui/material";
 import logo from "../../assets/logo.png";
 import { selectActiveTheme, setActiveTheme, SupportedThemes } from "../theming/themingSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { selectLoggedIn } from "../../features/authentication/authSlice";
 
 const StyledHeader = styled(Box)(({ theme }) => ({
   backgroundColor: theme.themedPalette.backgroundAlt,
@@ -29,6 +30,9 @@ const ThemeSelector = styled(TextField)(({ theme }) => ({
   "& label": {
     color: theme.themedPalette.primary
   },
+  "& .MuiSelect-select": {
+    color: theme.themedPalette.primary
+  },
   "& label.Mui-focused": {
     color: theme.themedPalette.primary
   },
@@ -44,12 +48,16 @@ const ThemeSelector = styled(TextField)(({ theme }) => ({
     },
     "&.Mui-focused fieldset": {
       borderColor: theme.themedPalette.primary
+    },
+    "& .MuiSvgIcon-root ": {
+      color: theme.themedPalette.primary
     }
   }
 }));
 
 export function Header(): JSX.Element {
   const activeTheme = useAppSelector(selectActiveTheme);
+  const isLoggedIn = useAppSelector(selectLoggedIn);
   const dispatch = useAppDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,19 +66,23 @@ export function Header(): JSX.Element {
   };
   return (
     <StyledHeader>
-      <Logo src={logo} alt="Zenith Logo" />
-      <ThemeSelector
-        select
-        variant="outlined"
-        label="Select Theme"
-        value={activeTheme}
-        onChange={handleChange}>
-        {OPTIONS.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </ThemeSelector>
+      {isLoggedIn && (
+        <>
+          <Logo src={logo} alt="Zenith Logo" />
+          <ThemeSelector
+            select
+            variant="outlined"
+            label="Select Theme"
+            value={activeTheme}
+            onChange={handleChange}>
+            {OPTIONS.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </ThemeSelector>
+        </>
+      )}
     </StyledHeader>
   );
 }
