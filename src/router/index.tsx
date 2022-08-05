@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, RouteProps, Routes } from "react-router
 import { selectLoggedIn } from "../features/authentication/authSlice";
 import { useAppSelector } from "../store/hooks";
 import DashboardContainer from "../features/Dashboard/DashboardContainer";
+import { NotFound } from "../ui/NotFound";
 
 interface ApplicationRoute extends RouteProps {
   isPrivate: boolean;
@@ -30,6 +31,7 @@ function ApplicationRouter(): JSX.Element {
             <Navigate to="/login" replace />
           );
         })}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
