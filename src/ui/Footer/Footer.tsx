@@ -18,7 +18,7 @@ const FooterText = styled(Typography)(({ theme }) => ({
 export function Footer(): JSX.Element {
   return (
     <StyledFooter>
-      <FooterText>Antonij Djajkoski | 2022</FooterText>
+      <FooterText>Ayrenn Artoris | 2022</FooterText>
     </StyledFooter>
   );
 }
