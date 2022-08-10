@@ -5,9 +5,9 @@ The project's main purpose is to provide a ready template for building React app
 ## In the box:
 - Primitive websocket connectivity available through dedicated middleware & slice.
 - Light & Dark theming with custom palette (possibility to append new themes fairly easily).
-- Request and Response interceptors included (without logic)
-- Session setters for JWT 
-- Authentication and private route handling pre-set
+- Request and Response interceptors included (without logic).
+- Session setters for JWT.
+- Authentication and private route handling pre-set.
 
 ## Future features:
 - Addition of RTK Query
