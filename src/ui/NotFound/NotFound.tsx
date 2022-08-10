@@ -3,6 +3,7 @@ import { Box, Button, styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ArrowBack } from "@mui/icons-material";
 import background from "../../assets/404.png";
+import { RouteNames } from "../../router/applicationRoutes";
 
 const Container = styled(Box)({
   backgroundImage: `url(${background})`,
@@ -31,7 +32,7 @@ export function NotFound(): JSX.Element {
     <Container>
       <StyledButton
         variant="contained"
-        onClick={() => navigate({ pathname: "/" })}
+        onClick={() => navigate({ pathname: RouteNames.INDEX })}
         endIcon={<ArrowBack />}>
         Back
       </StyledButton>
