@@ -5,6 +5,7 @@ import { useAppSelector } from "../store/hooks";
 import DashboardContainer from "../features/Dashboard/DashboardContainer";
 import { NotFound } from "../ui/NotFound";
 import { SplashScreenContainer } from "../features/SplashScreen/SplashScreenContainer";
+import { RouteNames } from "./routeNames";
 
 interface ApplicationRoute extends RouteProps {
   isPrivate?: boolean;
@@ -12,18 +13,18 @@ interface ApplicationRoute extends RouteProps {
 
 const ROUTES: ApplicationRoute[] = [
   {
-    path: "/",
+    path: RouteNames.INDEX,
     index: true,
     element: <Navigate to="/welcome" />
   },
   {
-    path: "/welcome",
+    path: RouteNames.WELCOME,
     index: true,
     element: <SplashScreenContainer />,
     isPrivate: false
   },
   {
-    path: "/dashboard",
+    path: RouteNames.DASHBOARD,
     element: <DashboardContainer />,
     isPrivate: true
   }
@@ -34,14 +35,19 @@ function ApplicationRouter(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        {ROUTES.map((route) => {
-          if (!route.isPrivate) return <Route {...route} key={route.path} />;
-          return isLoggedIn ? (
-            <Route {...route} key={route.path} />
-          ) : (
-            <Route element={<Navigate to="/welcome" />} key={route.path} />
-          );
-        })}
+        {ROUTES.map((route) => (
+          <Route
+            {...route}
+            key={route.path}
+            element={
+              !route.isPrivate || (route.isPrivate && isLoggedIn) ? (
+                route.element
+              ) : (
+                <Navigate to={RouteNames.WELCOME} />
+              )
+            }
+          />
+        ))}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

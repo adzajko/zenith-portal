@@ -8,6 +8,7 @@ The project's main purpose is to provide a ready template for building React app
 - Request and Response interceptors included (without logic).
 - Session setters for JWT.
 - Authentication and private route handling pre-set.
+- Storybook integration.
 
 ## Future features:
 - Addition of RTK Query
@@ -23,6 +24,8 @@ The project's main purpose is to provide a ready template for building React app
 - React Router (6.0.0)
 - Axios (0.27.2)
 - Typescript (4.6.0)
+- Storybook (6.5.10)
+- React Hook Form (7.34.0)
 
 ### ESLint configured with AirBnB preset. Prettier included in devDependencies.
 
