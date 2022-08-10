@@ -3,6 +3,7 @@ import authReducer from "../features/authentication/authSlice";
 import websocketReducer from "../features/websockets/wsocketSlice";
 import { socketMiddleware } from "../features/websockets/wsMiddleware";
 import themeReducer from "../ui/theming/themingSlice";
+import { errorMiddleware } from "./middleware/errorMiddleware";
 
 export const store = configureStore({
   reducer: {
@@ -10,7 +11,8 @@ export const store = configureStore({
     websocket: websocketReducer,
     theme: themeReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([socketMiddleware])
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat([socketMiddleware, errorMiddleware])
 });
 
 export type AppDispatch = typeof store.dispatch;

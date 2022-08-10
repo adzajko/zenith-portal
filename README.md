@@ -14,6 +14,7 @@ The project's main purpose is to provide a ready template for building React app
 - Addition of RTK Query
 - Support for OpenAPI generating
 - Forms
+- Theming using CSS variables.
 
 ## Dependencies used:
 
